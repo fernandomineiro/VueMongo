@@ -14,13 +14,13 @@ const post = reactive({
   uf: "",
   email: "",
 });
-const title = ref("This is an post edit page");
+const title = ref("é uma página para editar");
 
 onBeforeMount(async () => {
   try {
     await fetch(readUrl + route.params.id)
       .then((response) => response.json())
-      .then((json) => (post._id = json._id));
+      .then((json) => (post.id = json.id));
     await fetch(readUrl + route.params.id)
       .then((response) => response.json())
       .then((json) => (post.name = json.name));
@@ -58,7 +58,7 @@ async function editSave() {
 <template>
   <div>
     <PostTitle :title="title" />
-    <!-- <form @submit.prevent="editSave(post._id, event)"> DATA CHECK CONTROL AFTER -->
+
     <div class="form-floating mt-3 mb-3">
       <input
         type="text"

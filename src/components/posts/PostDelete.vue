@@ -7,12 +7,12 @@ const route = useRoute();
 
 const post = ref([]);
 
-const title = ref("TEssa é página para deltar pessoa");
+const title = ref("TEssa é página para deletar pessoa");
 
 const btn = ref("Perigo");
 
 const deneme = computed(() => {
-  if (route.params.id !== post.value._id) {
+  if (route.params.id !== post.value.id) {
     return true;
   }
 });
@@ -45,7 +45,7 @@ async function deletePost() {
     <PostTitle :title="title" />
     <div class="card mt-3">
       <span class="text-start badge bg-light text-wrap text-muted extra-small"
-        >id: {{ post._id }}</span
+        >id: {{ post.id }}</span
       >
       <div class="card-body">
         <span v-if="deneme">

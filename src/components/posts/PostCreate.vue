@@ -67,7 +67,7 @@ async function postSave() {
       <input
         type="text"
         class="form-control"
-        id="age"
+        id="idade"
         placeholder="IDADE"
         v-model="post.age"
       />
@@ -99,7 +99,7 @@ async function postSave() {
         class="form-control"
         id="email"
         placeholder="Email"
-        v-model="post.cpf"
+        v-model="post.email"
       />
       <label for="title">email</label>
     </div>

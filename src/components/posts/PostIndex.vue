@@ -7,7 +7,7 @@ const post = ref([]);
 
 onBeforeMount(async () => {
   try {
-    await fetch(createUrl)
+    await fetch(createUrl + "/all")
       .then((response) => response.json())
       .then((json) => (posts.value = json));
   } catch (error) {
@@ -17,7 +17,7 @@ onBeforeMount(async () => {
 
 async function postView(id) {
   try {
-    await fetch(readUrl + id)
+    await fetch(readUrl + `/${id}`)
       .then((response) => response.json())
       .then((json) => (post.value = json));
   } catch (error) {
@@ -34,9 +34,7 @@ async function postView(id) {
         <th scope="col">Nome</th>
         <th scope="col">CPF</th>
         <th scope="col">Idade</th>
-        <th scope="col">Cidade</th>
-        <th scope="col">Estado</th>
-        <th scope="col">Email</th>
+        <th scope="col">Ação</th>
       </tr>
     </thead>
     <tbody>
@@ -51,8 +49,9 @@ async function postView(id) {
               data-bs-toggle="modal"
               data-bs-target="#exampleModal"
             >
-              {{ i.title }}
+              {{ i.name }}
             </a>
+
             <!-- Modal -->
             <div
               class="modal fade"
@@ -90,7 +89,7 @@ async function postView(id) {
                     ></button>
                   </div>
                   <div class="modal-body">
-                    {{ post.cpf }}
+                    {{ post.name }}
                   </div>
                   <div class="modal-body">
                     {{ post.age }}
@@ -117,8 +116,9 @@ async function postView(id) {
               </div>
             </div>
           </td>
+          <td class="text-start">{{ i.cpf }}</td>
           <td class="text-start">
-            {{ i.CPF }}
+            {{ i.age }}
           </td>
           <td class="text-end">
             <div class="btn-group">
